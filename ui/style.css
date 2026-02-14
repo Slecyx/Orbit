@@ -1,0 +1,215 @@
+/* Orbit - Premium Design System */
+
+/* Global Reset & Base */
+window {
+    font-family: 'Inter', 'Cantarell', sans-serif;
+}
+
+/* Premium Row Styling - Glassmorphism & Depth */
+.premium-row {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    margin: 4px 12px;
+    padding: 8px;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.premium-row:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px) scale(1.005);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.premium-row:active {
+    transform: translateY(0) scale(0.99);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Compact Mode Overrides */
+.compact-list .premium-row {
+    margin: 2px 12px;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.compact-list .app-icon {
+    /* -gtk-icon-size: 32px; Linter issues, removed. Handled by transform */
+    transform: scale(0.8);
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* Icons */
+.app-icon {
+    border-radius: 12px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.premium-row:hover .app-icon {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* App Title & Metadata */
+.app-title {
+    font-weight: 700;
+    font-size: 1.1em;
+    /* Color inherited from theme */
+    opacity: 0.95;
+}
+
+.app-subtitle {
+    font-size: 0.9em;
+    /* Color inherited from theme */
+    opacity: 0.7;
+}
+
+/* Source Badges - Subtle & Clean */
+.source-badge {
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.source-flatpak .source-badge {
+    background-color: rgba(74, 144, 217, 0.15);
+    color: #4a90d9;
+}
+
+.source-snap .source-badge {
+    background-color: rgba(233, 84, 32, 0.15);
+    color: #e95420;
+}
+
+.source-apt .source-badge {
+    background-color: rgba(119, 33, 111, 0.15);
+    color: #77216f;
+}
+
+.source-pacman .source-badge {
+    background-color: rgba(23, 147, 209, 0.15);
+    color: #1793d1;
+}
+
+.source-dnf .source-badge {
+    background-color: rgba(60, 110, 180, 0.15);
+    color: #3c6eb4;
+}
+
+.source-appimage .source-badge {
+    background-color: rgba(38, 162, 105, 0.15);
+    color: #26a269;
+}
+
+/* Status Badges */
+.status-badge {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* Color inherited */
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+}
+
+.status-badge.installed {
+    background-color: rgba(38, 162, 105, 0.1);
+    color: #26a269;
+}
+
+.status-badge.update {
+    background-color: rgba(53, 132, 228, 0.1);
+    color: #3584e4;
+}
+
+.status-badge.sandbox {
+    background-color: rgba(230, 97, 0, 0.1);
+    color: #e66100;
+}
+
+/* Toolbar & Header */
+headerbar {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.toolbar {
+    padding: 8px;
+    /* Background inherited */
+    opacity: 0.95;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Search Entry */
+entry.search-entry {
+    border-radius: 18px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    min-width: 300px;
+}
+
+entry.search-entry:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: #3584e4;
+    /* Adwaita Blue */
+    box-shadow: 0 0 0 3px rgba(53, 132, 228, 0.15);
+}
+
+/* Buttons */
+button.suggested-action {
+    background-image: linear-gradient(to bottom right, #3584e4, #1c71d8);
+    color: white;
+    border: none;
+    box-shadow: 0 2px 4px rgba(53, 132, 228, 0.3);
+    font-weight: 600;
+}
+
+button.suggested-action:hover {
+    background-image: linear-gradient(to bottom right, #4a90d9, #3584e4);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(53, 132, 228, 0.4);
+}
+
+button.suggested-action:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(53, 132, 228, 0.2);
+}
+
+/* Details View */
+.details-card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 16px;
+}
+
+.details-title {
+    font-size: 1.5em;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.details-label {
+    opacity: 0.6;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    /* backdrop-filter removed for GTK4 compatibility */
+}
+
+/* Scrollbar */
+scrollbar slider {
+    min-width: 8px;
+    border-radius: 4px;
+}
