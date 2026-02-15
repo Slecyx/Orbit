@@ -34,6 +34,15 @@ Designed with **GTK4** and **Libadwaita**, Orbit provides a premium user experie
 - **Advanced Filtering**: Filter apps by source (e.g., show only Flatpak), status (installed/updates), or category.
 - **AppImage Support**: Automatically detects and manages AppImages from your standard directories.
 
+### 📸 Screenshots
+<div align="center">
+  <img src="assets/screenshots/app_list.png" width="45%">
+  <img src="assets/screenshots/app_details.png" width="45%">
+  <img src="assets/screenshots/filter_menu.png" width="45%">
+  <img src="assets/screenshots/package_statistics.png" width="45%">
+  <img src="assets/screenshots/settings.png" width="45%">
+</div>
+
 ### 🚀 Installation
 
 #### Prerequisites
@@ -101,6 +110,15 @@ We welcome contributions! Please feel free to submit a Pull Request.
 - **Modern Arayüz**: Glassmorphism efektleri, yumuşak animasyonlar ve duyarlı tasarımıyla göz alıcı bir deneyim.
 - **Gelişmiş Filtreleme**: Uygulamaları kaynağına (örn. sadece Flatpak), durumuna (kurulu/güncelleme) veya kategorisine göre filtreleyin.
 - **AppImage Desteği**: Standart klasörlerinizdeki AppImage dosyalarını otomatik olarak algılar ve yönetir.
+
+### 📸 Ekran Görüntüleri
+<div align="center">
+  <img src="assets/screenshots/app_list.png" width="45%">
+  <img src="assets/screenshots/app_details.png" width="45%">
+  <img src="assets/screenshots/filter_menu.png" width="45%">
+  <img src="assets/screenshots/package_statistics.png" width="45%">
+  <img src="assets/screenshots/settings.png" width="45%">
+</div>
 
 ### 🚀 Kurulum
 
