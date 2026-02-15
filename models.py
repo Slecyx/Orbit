@@ -31,6 +31,9 @@ class App:
     launch_command: str = ""  # Command to launch the app
     installed_date: str = ""  # Installation date
     dependencies: list = None  # List of dependencies
+    developer: str = "" # Developer name
+    license: str = "" # License type
+    homepage: str = "" # Homepage URL
     
     def __post_init__(self):
         if self.dependencies is None:

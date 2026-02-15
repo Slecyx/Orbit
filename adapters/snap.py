@@ -80,3 +80,41 @@ class SnapAdapter(PackageAdapter):
             return True
         except subprocess.CalledProcessError:
             return False
+
+    def get_details(self, app: App) -> App:
+        try:
+            # snap info <name>
+            result = subprocess.run(
+                ["snap", "info", app.id],
+                capture_output=True, text=True, check=True
+            )
+            
+            lines = result.stdout.split('\n')
+            description_started = False
+            description = []
+            
+            for line in lines:
+                line = line.strip()
+                if line.startswith('license:'):
+                    app.license = line.split(':', 1)[1].strip()
+                elif line.startswith('publisher:'):
+                    app.developer = line.split(':', 1)[1].strip().split()[0] # often 'Publisher Name (username)'
+                elif line.startswith('description:'):
+                    description_started = True
+                    continue
+                elif line.startswith('commands:') or line.startswith('snap-id:'):
+                    description_started = False
+                
+                if description_started and line:
+                    description.append(line)
+                    
+            if description:
+                app.description = " ".join(description)
+                
+            # Size is hard to get from snap info without install? 
+            # Actually 'installed:' line might have size if installed.
+            # But simpler to maybe use 'du' on the snap folder if really needed, but let's skip for now to avoid complexity.
+            
+        except subprocess.CalledProcessError:
+            pass
+        return app

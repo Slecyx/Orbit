@@ -22,3 +22,7 @@ class PackageAdapter(ABC):
     def search_apps(self, query: str) -> List[App]:
         """Searches for applications matching the query."""
         pass
+
+    def get_details(self, app: App) -> App:
+        """Retrieves detailed information for the application. Default implementation returns app as is."""
+        return app

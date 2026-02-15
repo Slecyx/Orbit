@@ -45,3 +45,28 @@ class PacmanAdapter(PackageAdapter):
 
     def search_apps(self, query: str) -> List[App]:
         return []
+
+    def get_details(self, app: App) -> App:
+        try:
+            # pacman -Qi <package_name>
+            result = subprocess.run(
+                ["pacman", "-Qi", app.id],
+                capture_output=True, text=True, check=True
+            )
+            
+            info = {}
+            for line in result.stdout.split('\n'):
+                if ':' in line:
+                    key, value = line.split(':', 1)
+                    info[key.strip()] = value.strip()
+            
+            app.description = info.get('Description', app.description)
+            app.license = info.get('Licenses', app.license)
+            app.size = info.get('Installed Size', app.size)
+            app.homepage = info.get('URL', app.homepage)
+            app.developer = info.get('Packager', app.developer)
+            app.installed_date = info.get('Install Date', app.installed_date)
+            
+        except subprocess.CalledProcessError:
+            pass
+        return app

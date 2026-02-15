@@ -83,3 +83,39 @@ class FlatpakAdapter(PackageAdapter):
             return True
         except subprocess.CalledProcessError:
             return False
+
+    def get_details(self, app: App) -> App:
+        try:
+            # flatpak info <app_id>
+            # We can use specific columns to make parsing easier
+            # flatpak info --show-metadata <app_id> is XML, maybe too complex.
+            # flatpak info <app_id> is human readable.
+            
+            # Let's try to just capture the output and parse commonly
+            result = subprocess.run(
+                ["flatpak", "info", app.id],
+                capture_output=True, text=True, check=True
+            )
+            
+            for line in result.stdout.split('\n'):
+                if ':' in line:
+                    key, value = line.split(':', 1)
+                    key = key.strip()
+                    value = value.strip()
+                    
+                    if key == 'License':
+                        app.license = value
+                    elif key == 'Origin':
+                        app.developer = value # Close enough? Or 'maintaner' isn't usually there.
+                    elif key == 'Installed':
+                         # value is size usually? "1.2 GB"
+                         app.size = value
+            
+            # Description is not easily available in 'flatpak info' simpler output.
+            # We might need 'appstream-util' or similar if we want rich descriptions for flatpaks locally.
+            # But flatpak list provided it during search.
+            # If search populated it, we are good.
+            
+        except subprocess.CalledProcessError:
+            pass
+        return app

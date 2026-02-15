@@ -254,5 +254,22 @@ class OrbitManager:
             except Exception as e:
                 logger.error(f"Error installing {app.name}: {e}")
                 raise OrbitException(f"Failed to install {app.name}: {e}")
-        return False
+    def get_app_details(self, app: App) -> App:
+        """
+        Fetch detailed information for an application.
+        
+        Args:
+            app: App object to fetch details for
+            
+        Returns:
+            App object with populated details
+        """
+        logger.info(f"Fetching details for: {app.name}")
+        adapter = self.registry.get_adapter(app.source)
+        if adapter and hasattr(adapter, 'get_details'):
+            try:
+                return adapter.get_details(app)
+            except Exception as e:
+                logger.error(f"Error fetching details for {app.name}: {e}")
+        return app
 
